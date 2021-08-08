@@ -19,6 +19,7 @@ export default () => {
     )
     setTemp(data.main.temp)
     setCondition(data.weather[0].main)
+
   }
 
   const getLocation = async() => {
@@ -26,18 +27,21 @@ export default () => {
       await Location.requestForegroundPermissionsAsync();
       const { coords: { latitude, longitude} } = await Location.getCurrentPositionAsync();
       getWeather(latitude, longitude)
+      setLoading(false)
     } catch (error) {
         Alert.alert("can't find your location", "Error")
     }
   }
 
+
+
   useEffect( () => {
     getLocation()
-    setLoading(false)
   }, [])
 
 
   return(
-    isLoading ? <Loading / > : <Weather temp={Math.round(temp)} condition={condition}/>
-  )
+      isLoading ? <Loading /> : <Weather temp={Math.round(temp)} condition={condition} />
+ )
+ 
 }

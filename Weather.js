@@ -7,31 +7,31 @@ import { LinearGradient } from 'expo-linear-gradient';
 const weatherOptions = {
     Clouds: {
         iconName: "cloud",
-        gradient: ["skyblue","#eee"]
+        gradient: ["skyblue","#eee"],
     },
     Thunderstorm: {
-        iconName: "",
-        gradient: [],
+        iconName: "thunderstorm",
+        gradient: ["skyblue","#eee"],
     },
     Drizzle: {
-        iconName: "",
-        gradient: [],
+        iconName: "rainy-outline",
+        gradient: ["skyblue","#eee"],
     },
     Rain: {
-        iconName: "",
-        gradient: [],
+        iconName: "rainy",
+        gradient: ["skyblue","#eee"],
     },
     Snow: {
-        iconName: "",
-        gradient: [],
+        iconName: "snow",
+        gradient: ["skyblue","#eee"],
     },
     Atmosphere: {
-        iconName: "",
-        gradient: [],
+        iconName: "cloud",
+        gradient: ["skyblue","#eee"],
     },
     Clear: {
-        iconName: "",
-        gradient: [],
+        iconName: "cloud",
+        gradient: ["skyblue","#eee"],
     },
 }
 
@@ -39,12 +39,12 @@ const Weather = ({ temp, condition }) => {
     return(
 
         <LinearGradient 
-            colors={weatherOptions[condition].gradient} 
+            colors={["skyblue","#eee"]} 
             style={styles.container} 
         >
             <View style={styles.halfContainer}>
                 <Ionicons 
-                    name={weatherOptions[condition].iconName} 
+                    name={"cloud"} 
                     color="white" 
                     size={96} 
                 />
@@ -68,13 +68,13 @@ const Weather = ({ temp, condition }) => {
 Weather.propTypes = {
     temp: PropTypes.number.isRequired,
     condition: PropTypes.oneOf([
+        "Clouds",
         "Thunderstorm",
         "Drizzle",
         "Rain",
         "Snow",
         "Atmosphere",
         "Clear",
-        "Clouds",
     ]).isRequired,
 }
 
